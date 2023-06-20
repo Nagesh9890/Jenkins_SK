@@ -1,16 +1,20 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:slim'
-        }
+  agent any
+  stages {
+    stage('version') {
+      steps {
+        sh 'python3 --version'
+      }
     }
-    stages {
-        stage('Build') {
-            steps {
-                // Your build steps here
-                sh 'python --version'
-            }
-        }
-        // Add more stages if needed
+    stage('Install Dependencies') {
+      steps {
+        sh 'pip3 install -r requirements.txt'
+      }
     }
+    stage('Python Build') {
+      steps {
+        sh 'python3 app.py'
+      }
+    }
+  }
 }
