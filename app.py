@@ -1,26 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  4 02:09:52 2023
-
-@author: Vishal
-"""
-
-# Import required libraries
+import re
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
-import numpy as np
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.multioutput import MultiOutputClassifier
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-import pickle
 from flask import Flask, request, jsonify
-import json
-import re
+import pickle
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -36,7 +21,6 @@ def clean_text(text):
 
 def custom_tokenizer(text):
     # split the text and value using regular expression
-    import re
     pattern = re.compile(r'[a-zA-Z]+\d+')
     text_and_value = pattern.findall(text)
     return text_and_value
@@ -59,8 +43,6 @@ with open('tfidf_benef_name_m3.pkl', 'rb') as file:
 
 with open('classifier_m3.pkl', 'rb') as file:
     classifier3 = pickle.load(file)
-
-
 
 @app.route('/bulk_req', methods=['POST'])
 def pred():
@@ -90,6 +72,5 @@ def pred():
     
     return jsonify(output)
 
-
 if __name__ == '__main__':
-    app.run(debug=True,host="0.0.0.0", port=5000)
+    app.run(debug=False, host="0.0.0.0", port=5000)
