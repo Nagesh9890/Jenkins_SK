@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('version') {
+    stage('version is wrong') {
       steps {
         sh 'python3 --version'
       }
