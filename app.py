@@ -11,9 +11,9 @@ app = Flask(__name__)
 
 # Define a helper function to clean text
 def clean_text(text):
-    # Remove special characters and symbols
+    # Remove special  yescharacters and symbols
     text = re.sub('[^a-zA-Z\s]+', '', text)
-    # Convert text to lowercase
+    # Convert text to lowercasegit 
     text = text.lower()
     # Remove numbers
     text = re.sub('\d+', '', text)
