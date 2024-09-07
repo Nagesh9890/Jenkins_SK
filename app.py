@@ -9,7 +9,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Define a helper function to clean textgit
+# Define a helper function to clean textgitstart
 def clean_text(text):
     # Remove special  yescharacters and symbols
     text = re.sub('[^a-zA-Z\s]+', '', text)
